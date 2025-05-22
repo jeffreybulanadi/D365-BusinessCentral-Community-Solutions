@@ -1,0 +1,32 @@
+{
+    "id": "b47c9e3a-1234-4567-89ab-cdef01234567",
+    "name": "Print Preview Custom File Names",
+    "publisher": "Jeffrey Bulanadi",
+    "version": "25.0.0.1",
+    "brief": "Customizes PDF file names in print preview",
+    "description": "This extension allows customization of PDF file names when downloading from print preview, automatically including document numbers.",
+    "privacyStatement": "",
+    "EULA": "",
+    "help": "",
+    "url": "",
+    "logo": "",
+    "dependencies": [],
+    "screenshots": [],
+    "platform": "1.0.0.0",
+    "application": "25.0.0.0",
+    "idRanges": [
+        {
+            "from": 50100,
+            "to": 50149
+        }
+    ],
+    "resourceExposurePolicy": {
+        "allowDebugging": true,
+        "allowDownloadingSource": true,
+        "includeSourceInSymbolFile": true
+    },
+    "runtime": "14.2",
+    "features": [
+        "NoImplicitWith"
+    ]
+}
