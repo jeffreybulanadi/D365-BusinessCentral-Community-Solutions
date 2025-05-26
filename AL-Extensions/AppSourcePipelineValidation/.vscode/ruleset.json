@@ -1,0 +1,11 @@
+{
+    "name": "Azure Pipeline Demo Ruleset",
+    "description": "Rules for Azure Pipeline Demo Project",
+    "rules": [
+        {
+            "id": "AA0215",
+            "action": "None",
+            "justification": "Table extension doesn't need a prefix"
+        }
+    ]
+}
