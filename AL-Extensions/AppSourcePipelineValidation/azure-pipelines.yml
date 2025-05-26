@@ -1,0 +1,82 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  appSourceAppFile: '$(Build.ArtifactStagingDirectory)/AppSourceApp.zip'
+  testResultsFile: '$(Build.ArtifactStagingDirectory)/TestResults.xml'
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildAndTest
+    steps:
+    - task: ALOpsDockerCreate@1
+      inputs:
+        docker_image: 'mcr.microsoft.com/businesscentral/sandbox:25.0'
+        docker_pull: true
+        memory_gb: 8
+
+    # Compile app
+    - task: ALOpsAppCompile@1
+      inputs:
+        usedocker: true
+        nav_app_version: '25.0.0.1'
+        targetproject: 'app.json'
+        failonwarning: true
+
+    # Run AppSource Checklist validation
+    - task: ALOpsAppValidation@1
+      inputs:
+        usedocker: true
+        validation_type: 'AppSourceCop'
+        app_file: '$(Build.SourcesDirectory)/*.app'
+
+    # Run Code Analysis
+    - task: ALOpsAppValidation@1
+      inputs:
+        usedocker: true
+        validation_type: 'CodeCop'
+        app_file: '$(Build.SourcesDirectory)/*.app'
+
+    # Run Tests
+    - task: ALOpsAppTest@1
+      inputs:
+        usedocker: true
+        testcodunitid: '50201'
+        companyname: 'CRONUS'
+        testsuite: 'DEFAULT'
+        failed_test_action: 'Fail'
+        
+    # Publish Test Results
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'XUnit'
+        testResultsFiles: '$(testResultsFile)'
+        failTaskOnFailedTests: true
+
+    # Package for AppSource
+    - task: ALOpsAppPublish@1
+      inputs:
+        usedocker: true
+        nav_app_version: '25.0.0.1'
+        targetproject: 'app.json'
+        skip_verification: false
+        app_file_suffix: '_AppSource'
+        publish_artifact: true
+
+    # Create AppSource Package
+    - task: ALOpsAppPackage@1
+      inputs:
+        app_folder: '$(Build.SourcesDirectory)'
+        package_name: 'AppSourceApp'
+        package_path: '$(appSourceAppFile)'
+
+    # Publish Build Artifacts
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'AppSourcePackage'
+        publishLocation: 'Container'
