@@ -4,6 +4,32 @@
 [![AL Language](https://img.shields.io/badge/AL-Language-orange)](https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-programming-in-al)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+## 📸 Extension Preview
+
+### Initial State - Ready to Track
+![Extension Initial State](2025-06-18_0-07-31.png)
+*The extension interface when first opened, showing "Not Tracking" status and empty data view.*
+
+### Active Tracking - Captured Inconsistent Entry  
+![Extension with Captured Data](2025-06-18_0-12-57.png)
+*Real-time capture of problematic G/L entry (Invoice 103199) showing the imbalance: -20,301.00 total balance with 20,301.00 in credits.*
+
+## 🔍 What You See in Action
+
+The screenshots above demonstrate the extension's power:
+
+**🎯 Problem Identified**: Invoice 103199 posted on 4/1/2025 shows a clear imbalance
+- **G/L Account**: 4110 
+- **Amount**: -20,301.00 (Credit)
+- **Balance Issue**: Total Credits (20,301.00) don't match Total Debits (0.00)
+- **Root Cause**: Missing corresponding debit entry or incorrect posting logic
+
+**📊 Real-Time Analysis**: The extension captured this inconsistency the moment it occurred during posting, providing:
+- Exact document number and posting date
+- Specific G/L accounts involved  
+- Department code (MEDIUM) for dimensional analysis
+- Complete entry details including bal. account information
+
 ## 🎯 Problem Statement
 
 **Are you experiencing "Inconsistencies in the G/L Entry table" errors in Business Central?**
@@ -50,7 +76,7 @@ graph TD
 
 ### Step-by-Step Troubleshooting
 
-1. **📋 Prepare for Analysis**
+1. **📋 Prepare for Analysis** *(See Screenshot 1)*
    - Open "Review G/L Inconsistencies" page
    - Click **"Start Tracking"** button
    - Status will show "Tracking" in green
@@ -59,7 +85,7 @@ graph TD
    - Attempt the posting operation that causes the error
    - The extension automatically captures inconsistent G/L entries
 
-3. **📊 Analyze Results**
+3. **📊 Analyze Results** *(See Screenshot 2)*
    - Click **"Refresh Entries"** to see captured data
    - Review the totals: Debits, Credits, and Balance
    - Examine individual entries for anomalies
@@ -70,7 +96,16 @@ graph TD
    - Verify account mappings
    - Analyze multi-currency calculations
 
+**💡 Pro Tip**: The second screenshot shows a perfect example - Invoice 103199 has only credit entries (20,301.00) with no corresponding debit entries, creating the -20,301.00 imbalance.
+
 ## 📋 Common Inconsistency Scenarios
+
+### 🔥 Real Example from Screenshots
+**Issue**: Invoice 103199 - Missing Debit Entries
+- **Symptom**: Total Balance = -20,301.00 (Credits exceed Debits)
+- **Analysis**: Only credit entry to G/L Account 4110 exists
+- **Solution**: Investigate why corresponding debit entry wasn't created
+- **Likely Cause**: Custom posting routine or account mapping error
 
 ### Scenario 1: Rounding Differences
 **Symptoms:** Total balance shows small amounts (0.01, 0.02)
@@ -85,7 +120,7 @@ graph TD
 **Solution:** Verify dimension posting rules and mandatory settings
 
 ### Scenario 4: Custom Posting Routines
-**Symptoms:** Imbalance in custom G/L accounts
+**Symptoms:** Imbalance in custom G/L accounts (like the example above)
 **Solution:** Review custom posting code for proper balancing
 
 ## 🛠️ Technical Details
@@ -119,7 +154,6 @@ The extension temporarily stores G/L entries when `IsTransactionConsistent = fal
 > *"I have sales order posting issues. I checked G/L ledger entries but couldn't find unmatched data. How can I fix this?"*
 
 **Answer:** Use this extension to capture the exact G/L entries causing the inconsistency in real-time. Traditional manual review of G/L entries after the fact often misses the problematic transactions because they occur during the posting process itself.
-
 ## 🤝 Contributing
 
 Found a bug or have a feature request? 
