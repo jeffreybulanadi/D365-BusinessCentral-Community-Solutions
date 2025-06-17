@@ -1,0 +1,32 @@
+{
+  "id": "75ed3892-778f-4189-a4d6-919192776c1b",
+  "name": "GL Inconsistency Error Solution",
+  "publisher": "Jeffrey Bulanadi",
+  "version": "25.0.0.1",
+  "brief": "Real-time tracking and analysis tool for diagnosing G/L Entry table inconsistencies during posting operations",
+  "description": "A comprehensive diagnostic extension that helps Business Central developers and consultants identify and resolve G/L Entry table inconsistencies. Features real-time tracking of G/L entries during posting operations, detailed analysis views with balance verification, and easy start/stop controls for targeted troubleshooting. Essential for diagnosing posting errors, rounding differences, and transaction imbalances in multi-currency and complex posting scenarios.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "25.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "14.2",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
