@@ -1,0 +1,32 @@
+{
+  "id": "12345678-1234-1234-1234-123456789012",
+  "name": "BC26 Continue Demo",
+  "publisher": "Jeffrey Bulanadi",
+  "version": "1.0.0.0",
+  "brief": "Demo showcasing the new continue keyword in AL for Business Central 26",
+  "description": "This extension demonstrates the new continue keyword functionality introduced in Business Central 2025 Wave 1 (v26), showing how it can make loops cleaner and more readable.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "https://github.com/jeffbulanadi/bc26-continue-demo",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 60000,
+      "to": 60099
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
