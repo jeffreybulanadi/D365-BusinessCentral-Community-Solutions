@@ -1,0 +1,32 @@
+{
+  "id": "4d5d915b-639a-4959-b21c-ee0771435fab",
+  "name": "RetentionPolicy-Demo",
+  "publisher": "Jeffrey Bulanadi",
+  "version": "26.1.0.250507",
+  "brief": "Comprehensive demo showcasing Business Central Retention Policies with custom tables and change log entries",
+  "description": "This extension demonstrates the implementation and usage of Business Central Retention Policies. It includes custom tables for demo data, automatic policy setup, change log integration, and practical examples of data cleanup automation. Perfect for understanding how to manage data lifecycle and compliance requirements.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "26.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "15.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
